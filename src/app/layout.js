@@ -1,5 +1,9 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarComponent from "./components/navbar";
+import { Container } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +15,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NavbarComponent></NavbarComponent>
+        <Container className="my-5">
+          <ToastContainer autoClose={1500} stacked hideProgressBar={false} />
+          {children}
+        </Container>
+      </body>
     </html>
   );
 }
